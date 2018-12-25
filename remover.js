@@ -9,53 +9,19 @@ chrome.runtime.onInstalled.addListener(function() {
         }]);
 
 
-        function blockSignature(){
-            var style = document.createElement('mt-signature');
-            style.type = 'text/css';
-            style.innerHTML = '.cssClass { display: none; }';
-            document.getElementsByTagName('head')[0].appendChild(style);
-            
-            document.getElementById('someElementId').className = 'cssClass';
-        }
-
-
-        function removeSignatureProccess(recursive=false){
-
-            function removeSignature() {
-                document.getElementsByClassName("mt-signature")[0].remove();
-            }
-    
-            function isNewMessageWindows() {
-                return document.getElementsByClassName("Am Al editable LW-avf").length != 0;
-            }
-    
-            function canRemove() {
-                return document.getElementsByClassName("mt-signature")[0] != undefined;
-            }
-
-            alert('removeSignatureProccess');
-            if (!recursive){
-                if (!isNewMessageWindows()){
-                    alert('exit');
-                    return;
-                }
-            } 
-
-            if (canRemove()){
-                alert('canRemove');
+        function removeSignature() {
+            setTimeout(function () {
+                for(var i = 0; document.getElementsByClassName("mt-signature").length; i++)
+                    document.getElementsByClassName("mt-signature")[i].remove();
                 removeSignature();
-            } else { 
-                alert('repeat');
-                removeSignatureProccess(true);
-            }
-
+            }, 1000);
         }
-
+    
         chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {  
-            if(changeInfo.status == "complete"){ 
-                    if (tab.url.indexOf('mail.google.com') !== -1){
+            if(changeInfo.status == "complete"){
+                if (tab.url.indexOf('mail.google.com') !== -1){
                     chrome.tabs.executeScript({
-                        code: '(' + removeSignatureProccess + ')(false);' 
+                        code: '(' + removeSignature + ')();' 
                     }, (results) => {
                     });
                 }

@@ -7,6 +7,12 @@
       "scripts": ["remover.js"],
       "persistent": false
     },
+    "content_scripts": [
+      {
+        "matches": ["https://mail.google.com/*"], 
+        "css" : ["style.css"]
+      }
+  ],
     "icons": {
       "16": "images/icon16.png",
       "32": "images/icon32.png",
