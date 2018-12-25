@@ -1,6 +1,6 @@
-# Mailtrack signature remove
+# Mailtrack signature remove for Google Chrome
 
-This chrome extension clears the annoying signature of Mailtrack.
+Clears the annoying signature of Mailtrack.
 
 ## How to install
 
