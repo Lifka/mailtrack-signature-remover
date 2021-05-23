@@ -11,8 +11,7 @@ chrome.runtime.onInstalled.addListener(function() {
 
         function removeSignature() {
             setTimeout(function () {
-                for(var i = 0; document.getElementsByClassName("mt-signature").length; i++)
-                    document.getElementsByClassName("mt-signature")[i].remove();
+                document.getElementById("mt-signature").remove();
                 removeSignature();
             }, 1000);
         }
